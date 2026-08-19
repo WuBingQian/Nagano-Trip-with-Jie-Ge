@@ -1060,3 +1060,55 @@ img {
   padding: 0.6rem;
   margin-bottom: 0.9rem;
 }
+
+/* ---------- Mobile navbar fix ---------- */
+body {
+  overflow-x: clip;
+}
+
+.nav-short {
+  display: none;
+}
+
+.navbar-links {
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navbar-links::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 620px) {
+  .navbar {
+    gap: 0.4rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .brand-dates {
+    display: none;
+  }
+
+  .nav-full {
+    display: none;
+  }
+
+  .nav-short {
+    display: inline;
+  }
+
+  .navbar-link {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .navbar-links {
+    gap: 0.15rem;
+  }
+
+  .theme-toggle {
+    flex-shrink: 0;
+    margin-left: 0;
+  }
+}

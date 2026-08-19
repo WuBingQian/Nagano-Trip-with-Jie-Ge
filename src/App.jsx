@@ -62,25 +62,33 @@ function NavBar() {
   return (
     <nav className="navbar" aria-label="Site">
       <a className="navbar-brand" href="#top">
-        ✦ Nagano · Aug 21–23
+        ✦ Nagano<span className="brand-dates"> · Aug 21–23</span>
       </a>
       <div className="navbar-links">
         {days.map((d) => (
-          <a key={d.id} className="navbar-link" href={`#${d.id}`}>
-            Day {d.number}
+          <a
+            key={d.id}
+            className="navbar-link"
+            href={`#${d.id}`}
+            aria-label={`Day ${d.number}`}
+          >
+            <span className="nav-full">Day {d.number}</span>
+            <span className="nav-short">{d.number}</span>
           </a>
         ))}
         <a className="navbar-link" href="#map">
-          Map
+          <span className="nav-full">Map</span>
+          <span className="nav-short">🗺️</span>
         </a>
         <a className="navbar-link" href="#tools">
-          Tools
+          <span className="nav-full">Tools</span>
+          <span className="nav-short">🔭</span>
         </a>
         <a className="navbar-link" href="#expenses">
           ¥
         </a>
-        <ThemeToggle />
       </div>
+      <ThemeToggle />
     </nav>
   )
 }
