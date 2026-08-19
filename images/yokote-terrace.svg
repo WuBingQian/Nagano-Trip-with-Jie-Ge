@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sea of clouds panorama from Yokote View Terrace">
+  <defs>
+    <linearGradient id="ysky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb2e0"/>
+      <stop offset="1" stop-color="#dcecf7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#ysky)"/>
+  <circle cx="640" cy="90" r="46" fill="#fff6d8"/>
+  <circle cx="640" cy="90" r="66" fill="#fff6d8" opacity="0.35"/>
+  <path d="M0 250 L140 170 L260 240 L420 150 L560 235 L700 175 L800 230 L800 500 L0 500Z" fill="#5a6f94" opacity="0.75"/>
+  <path d="M0 300 L120 240 L300 305 L480 235 L640 300 L800 260 L800 500 L0 500Z" fill="#41567c"/>
+  <g fill="#ffffff">
+    <ellipse cx="90" cy="345" rx="150" ry="42"/>
+    <ellipse cx="300" cy="360" rx="180" ry="48"/>
+    <ellipse cx="540" cy="348" rx="170" ry="44"/>
+    <ellipse cx="740" cy="362" rx="150" ry="46"/>
+    <ellipse cx="180" cy="395" rx="200" ry="52"/>
+    <ellipse cx="500" cy="400" rx="220" ry="56"/>
+    <ellipse cx="760" cy="405" rx="160" ry="50"/>
+  </g>
+  <g fill="#f2f7fb">
+    <ellipse cx="120" cy="430" rx="220" ry="60"/>
+    <ellipse cx="460" cy="445" rx="260" ry="64"/>
+    <ellipse cx="740" cy="440" rx="180" ry="58"/>
+  </g>
+  <path d="M0 500 L0 420 L90 380 L200 430 L200 500Z" fill="#3c5240"/>
+  <rect x="40" y="360" width="90" height="46" rx="6" fill="#5c4a38"/>
+  <path d="M32 360 h106 l-12 -22 h-82Z" fill="#3e3226"/>
+  <rect x="58" y="372" width="22" height="22" fill="#ffe9b0"/>
+  <rect x="94" y="372" width="22" height="22" fill="#ffe9b0"/>
+  <path d="M148 406 v-58 l5 -8 l5 8 v58Z" fill="#8a6a4a"/>
+</svg>

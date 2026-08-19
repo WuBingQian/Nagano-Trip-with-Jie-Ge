@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Kumoba Pond mirror reflections">
+  <defs>
+    <linearGradient id="ksky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8e3c0"/>
+      <stop offset="1" stop-color="#fdf3df"/>
+    </linearGradient>
+    <linearGradient id="kwater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8d3b4"/>
+      <stop offset="1" stop-color="#b7986f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="260" fill="url(#ksky)"/>
+  <circle cx="410" cy="90" r="36" fill="#fff" opacity="0.85"/>
+  <g>
+    <path d="M0 260 L90 170 L180 260Z" fill="#6d8f5a"/>
+    <path d="M120 260 L230 120 L340 260Z" fill="#4c7345"/>
+    <path d="M290 260 L390 160 L490 260Z" fill="#77a05e"/>
+    <path d="M440 260 L560 110 L680 260Z" fill="#456c40"/>
+    <path d="M620 260 L720 165 L800 250 L800 260Z" fill="#6d8f5a"/>
+    <rect x="86" y="235" width="9" height="25" fill="#5a4632"/>
+    <rect x="225" y="228" width="11" height="32" fill="#5a4632"/>
+    <rect x="385" y="235" width="9" height="25" fill="#5a4632"/>
+    <rect x="554" y="226" width="12" height="34" fill="#5a4632"/>
+  </g>
+  <rect y="260" width="800" height="240" fill="url(#kwater)"/>
+  <g opacity="0.45" transform="translate(0,520) scale(1,-1)">
+    <path d="M0 260 L90 170 L180 260Z" fill="#6d8f5a"/>
+    <path d="M120 260 L230 120 L340 260Z" fill="#4c7345"/>
+    <path d="M290 260 L390 160 L490 260Z" fill="#77a05e"/>
+    <path d="M440 260 L560 110 L680 260Z" fill="#456c40"/>
+    <path d="M620 260 L720 165 L800 250 L800 260Z" fill="#6d8f5a"/>
+  </g>
+  <g stroke="#fdf3df" stroke-width="3" opacity="0.55" stroke-linecap="round">
+    <line x1="120" y1="315" x2="250" y2="315"/>
+    <line x1="430" y1="360" x2="600" y2="360"/>
+    <line x1="220" y1="420" x2="380" y2="420"/>
+    <line x1="560" y1="455" x2="700" y2="455"/>
+  </g>
+  <ellipse cx="410" cy="470" rx="36" ry="7" fill="#fff" opacity="0.4"/>
+</svg>

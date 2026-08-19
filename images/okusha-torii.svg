@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="The Great Torii Gate at Togakushi Okusha">
+  <defs>
+    <linearGradient id="tsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcebdc"/>
+      <stop offset="1" stop-color="#f4f7ec"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#tsky)"/>
+  <g fill="#43604a">
+    <ellipse cx="80" cy="180" rx="120" ry="200"/>
+    <ellipse cx="720" cy="180" rx="120" ry="200"/>
+    <ellipse cx="210" cy="120" rx="90" ry="160"/>
+    <ellipse cx="590" cy="120" rx="90" ry="160"/>
+  </g>
+  <path d="M0 440 Q400 410 800 440 L800 500 L0 500Z" fill="#54684e"/>
+  <path d="M330 500 L400 415 L470 500 Q400 490 330 500Z" fill="#c9bda3"/>
+  <path d="M352 500 L400 428 L448 500 Q400 492 352 500Z" fill="#b5a88c"/>
+  <g fill="#3a3f45">
+    <path d="M180 150 h440 l14 26 h-468Z"/>
+    <rect x="196" y="176" width="408" height="16"/>
+    <rect x="238" y="230" width="324" height="16"/>
+    <rect x="252" y="176" width="26" height="264" transform="skewX(-2)"/>
+    <rect x="524" y="176" width="26" height="264" transform="skewX(2)"/>
+    <rect x="390" y="192" width="20" height="38"/>
+  </g>
+  <g fill="#2c3d33">
+    <ellipse cx="330" cy="452" rx="9" ry="4"/>
+    <ellipse cx="470" cy="452" rx="9" ry="4"/>
+  </g>
+  <path d="M398 428 l4 -10 l4 10 l-2 40 h-4Z" fill="#3a3f45" opacity="0.8"/>
+</svg>
