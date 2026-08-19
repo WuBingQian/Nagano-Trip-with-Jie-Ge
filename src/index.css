@@ -1049,3 +1049,14 @@ img {
   color: inherit;
   text-decoration-color: var(--violet);
 }
+
+/* ---------- Gear product photo ---------- */
+.gear-photo {
+  width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.6rem;
+  margin-bottom: 0.9rem;
+}

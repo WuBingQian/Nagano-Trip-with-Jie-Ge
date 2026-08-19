@@ -141,8 +141,11 @@ function HeroRidge() {
   )
 }
 
+const GEAR_IMG = 'https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001314788.jpg'
+
 function Hero() {
   const [avatarOk, setAvatarOk] = useState(true)
+  const [gearImgOk, setGearImgOk] = useState(true)
   return (
     <header className="hero" id="top">
       <Stars />
@@ -164,6 +167,15 @@ function Hero() {
         </p>
         <div className="gear-card">
           <p className="gear-heading">In the bag</p>
+          {gearImgOk && (
+            <img
+              className="gear-photo"
+              src={GEAR_IMG}
+              alt="Camera gear"
+              loading="lazy"
+              onError={() => setGearImgOk(false)}
+            />
+          )}
           <ul className="gear-list">
             {trip.gear.map((g) => (
               <li key={g.label} className="gear-item">
