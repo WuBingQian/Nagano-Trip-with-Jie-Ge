@@ -12,15 +12,67 @@ const load = () => {
 
 const yen = (n) => `¥${Math.round(n).toLocaleString('ja-JP')}`
 
+// Share/import expenses between phones via a #exp= URL fragment —
+// no backend, the data travels inside the link itself.
+const encodeRows = (rows) =>
+  btoa(
+    unescape(
+      encodeURIComponent(
+        JSON.stringify(rows.map((r) => [r.desc, r.amt, r.payer])),
+      ),
+    ),
+  )
+
+const decodeRows = (hash) => {
+  try {
+    const raw = JSON.parse(decodeURIComponent(escape(atob(hash))))
+    return raw.map(([desc, amt, payer], i) => ({
+      id: Date.now() + i,
+      desc: String(desc),
+      amt: Number(amt),
+      payer: payer === 'jie' ? 'jie' : 'me',
+    }))
+  } catch {
+    return null
+  }
+}
+
 export default function Expenses() {
   const [rows, setRows] = useState(load)
   const [desc, setDesc] = useState('')
   const [amt, setAmt] = useState('')
   const [payer, setPayer] = useState('me')
+  const [shared, setShared] = useState(null)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(rows))
   }, [rows])
+
+  useEffect(() => {
+    const m = window.location.hash.match(/#exp=([A-Za-z0-9+/=]+)/)
+    if (m) {
+      const imported = decodeRows(m[1])
+      if (imported?.length) setShared(imported)
+    }
+  }, [])
+
+  const importShared = () => {
+    setRows(shared)
+    setShared(null)
+    history.replaceState(null, '', window.location.pathname)
+  }
+
+  const copyShareLink = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#exp=${encodeRows(rows)}`
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    } catch {
+      prompt('Copy this link:', url)
+    }
+  }
 
   const add = (e) => {
     e.preventDefault()
@@ -49,6 +101,21 @@ export default function Expenses() {
       <p className="section-sub">
         Saved on this device only — tolls, fuel, food, the lot.
       </p>
+      {shared && (
+        <div className="exp-import">
+          <span>
+            🔗 This link carries {shared.length} shared expense
+            {shared.length > 1 ? 's' : ''} — import them? (replaces your
+            current list)
+          </span>
+          <button className="exp-add" onClick={importShared}>
+            Import
+          </button>
+          <button className="exp-dismiss" onClick={() => setShared(null)}>
+            Dismiss
+          </button>
+        </div>
+      )}
       <form className="exp-form" onSubmit={add}>
         <input
           className="exp-input"
@@ -104,6 +171,9 @@ export default function Expenses() {
             {yen(paidJie)}
           </p>
           <p className="exp-balance">{balance}</p>
+          <button className="exp-share" onClick={copyShareLink}>
+            {copied ? '✅ Link copied!' : '🔗 Copy share link for Jie Ge'}
+          </button>
         </>
       )}
     </section>

@@ -39,6 +39,37 @@ export default function RouteMap() {
       all.push(...pts)
     })
     map.fitBounds(L.latLngBounds(all).pad(0.1))
+
+    // "Locate me" control: drops a marker on the viewer's GPS position.
+    const Locate = L.Control.extend({
+      options: { position: 'topleft' },
+      onAdd() {
+        const btn = L.DomUtil.create('button', 'map-locate')
+        btn.innerHTML = '📡'
+        btn.title = 'Show my location'
+        btn.setAttribute('aria-label', 'Show my location')
+        L.DomEvent.on(btn, 'click', (e) => {
+          L.DomEvent.stop(e)
+          map.locate({ setView: true, maxZoom: 12, enableHighAccuracy: true })
+        })
+        return btn
+      },
+    })
+    map.addControl(new Locate())
+    let meMarker
+    map.on('locationfound', (e) => {
+      if (meMarker) meMarker.remove()
+      meMarker = L.circleMarker(e.latlng, {
+        radius: 8,
+        color: '#fff',
+        weight: 2,
+        fillColor: '#e0564a',
+        fillOpacity: 0.95,
+      })
+        .addTo(map)
+        .bindPopup('You are here')
+    })
+
     return () => map.remove()
   }, [])
 

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { trip, days, stats } from './data/itinerary.js'
+import { distanceKm } from './lib/astro.js'
 import DayConditions from './components/DayConditions.jsx'
+import NightPanel from './components/NightPanel.jsx'
 import RouteMap from './components/RouteMap.jsx'
 import AstroToolkit from './components/AstroToolkit.jsx'
 import Expenses from './components/Expenses.jsx'
@@ -245,8 +247,68 @@ function ShotList({ stop }) {
   )
 }
 
+function DistanceChip({ coords }) {
+  const [state, setState] = useState('idle') // idle | busy | done | error
+  const [km, setKm] = useState(null)
+
+  const locate = () => {
+    if (!navigator.geolocation) return setState('error')
+    setState('busy')
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setKm(distanceKm([pos.coords.latitude, pos.coords.longitude], coords))
+        setState('done')
+      },
+      () => setState('error'),
+      { enableHighAccuracy: true, timeout: 15000 },
+    )
+  }
+
+  if (state === 'done')
+    return (
+      <span className="distance-chip">
+        📡 {km < 10 ? km.toFixed(1) : Math.round(km)} km away (straight line)
+      </span>
+    )
+  if (state === 'error')
+    return <span className="distance-chip muted">📡 location unavailable</span>
+  return (
+    <button className="distance-chip btn" onClick={locate} disabled={state === 'busy'}>
+      📡 {state === 'busy' ? 'Locating…' : 'How far from me?'}
+    </button>
+  )
+}
+
+function Lightbox({ src, alt, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={alt}
+      onClick={onClose}
+    >
+      <img className="lightbox-img" src={src} alt={alt} />
+      <button className="lightbox-close" aria-label="Close" onClick={onClose}>
+        ✕
+      </button>
+    </div>
+  )
+}
+
 function Stop({ stop, nowNext }) {
   const [photoFailed, setPhotoFailed] = useState(false)
+  const [lightbox, setLightbox] = useState(false)
   const usePhoto = stop.photo && !photoFailed
   const ref = useRef(null)
 
@@ -289,13 +351,19 @@ function Stop({ stop, nowNext }) {
       <article className="stop-card">
         {stop.image && (
           <figure className="stop-figure">
-            <img
-              className="stop-image"
-              src={usePhoto ? stop.photo : stop.image}
-              alt={stop.name}
-              loading="lazy"
-              onError={() => setPhotoFailed(true)}
-            />
+            <button
+              className="stop-figure-btn"
+              onClick={() => setLightbox(true)}
+              aria-label={`View ${stop.name} photo full screen`}
+            >
+              <img
+                className="stop-image"
+                src={usePhoto ? stop.photo : stop.image}
+                alt={stop.name}
+                loading="lazy"
+                onError={() => setPhotoFailed(true)}
+              />
+            </button>
             {usePhoto && stop.credit && (
               <figcaption className="stop-credit">
                 Photo:{' '}
@@ -312,6 +380,11 @@ function Stop({ stop, nowNext }) {
             {isNow && <span className="live-chip now">▶ Now</span>}
             {isNext && <span className="live-chip next">Next</span>}
           </p>
+          {(isNext || isNow) && stop.coords && (
+            <p className="stop-distance">
+              <DistanceChip coords={stop.coords} />
+            </p>
+          )}
           <h3 className="stop-name">{stop.name}</h3>
           {stop.subname && <p className="stop-subname">{stop.subname}</p>}
           <p className="stop-description">{stop.description}</p>
@@ -321,6 +394,7 @@ function Stop({ stop, nowNext }) {
               {stop.tips}
             </p>
           )}
+          {stop.type === 'night' && <NightPanel stop={stop} />}
           {stop.shots && <ShotList stop={stop} />}
           {(stop.map || stop.bortle) && (
             <p className="stop-actions">
@@ -348,6 +422,13 @@ function Stop({ stop, nowNext }) {
           )}
         </div>
       </article>
+      {lightbox && stop.image && (
+        <Lightbox
+          src={usePhoto ? stop.photo : stop.image}
+          alt={stop.name}
+          onClose={() => setLightbox(false)}
+        />
+      )}
     </li>
   )
 }

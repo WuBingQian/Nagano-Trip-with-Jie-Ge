@@ -1112,3 +1112,205 @@ body {
     margin-left: 0;
   }
 }
+
+/* ---------- Night panel: cloud strip + core finder ---------- */
+.night-panel {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cloud-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.cloud-strip-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+  align-self: center;
+  margin-right: 0.2rem;
+}
+
+.cloud-cell {
+  display: grid;
+  justify-items: center;
+  padding: 5px 9px;
+  border-radius: 9px;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  border: 1px solid var(--border);
+}
+
+.cloud-cell small {
+  color: var(--text-muted);
+  font-size: 0.64rem;
+}
+
+.cloud-cell.good { background: rgba(90, 170, 120, 0.18); border-color: rgba(90, 170, 120, 0.5); }
+.cloud-cell.mid { background: rgba(240, 180, 100, 0.14); border-color: rgba(240, 180, 100, 0.45); }
+.cloud-cell.bad { background: rgba(224, 86, 74, 0.14); border-color: rgba(224, 86, 74, 0.45); }
+
+.core-finder {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--violet) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--violet) 32%, transparent);
+}
+
+.core-compass {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.core-n {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 700 0.55rem var(--font-body);
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+.core-arrow {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-size: 1.15rem;
+  color: var(--accent);
+  transform: rotate(calc(var(--az) - 90deg));
+}
+
+.core-text {
+  font-size: 0.85rem;
+}
+
+/* ---------- Distance chip ---------- */
+.stop-distance {
+  margin-bottom: 0.4rem;
+}
+
+.distance-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 0.8rem var(--font-body);
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--text);
+}
+
+.distance-chip.btn {
+  cursor: pointer;
+}
+
+.distance-chip.muted {
+  opacity: 0.6;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(8, 5, 18, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: zoom-out;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(23, 17, 38, 0.7);
+  color: #e6e6fa;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.stop-figure-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+}
+
+/* ---------- Expense share/import ---------- */
+.exp-import {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--cosmic) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cosmic) 50%, var(--border));
+  font-size: 0.86rem;
+}
+
+.exp-dismiss {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font: 600 0.85rem var(--font-body);
+}
+
+.exp-share {
+  margin-top: 0.6rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cosmic) 55%, var(--border));
+  background: color-mix(in srgb, var(--cosmic) 22%, transparent);
+  color: var(--text);
+  font: 600 0.85rem var(--font-body);
+  cursor: pointer;
+}
+
+/* ---------- Map locate control ---------- */
+.map-locate {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
