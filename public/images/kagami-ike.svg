@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Milky Way over Kagami-ike Pond with mirror reflection">
+  <defs>
+    <linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05070f"/>
+      <stop offset="0.6" stop-color="#0d1330"/>
+      <stop offset="1" stop-color="#1b2352"/>
+    </linearGradient>
+    <linearGradient id="mw" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9b8e8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#e8ddf7" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#8fb0e0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="nwater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101736"/>
+      <stop offset="1" stop-color="#060912"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="310" fill="url(#nsky)"/>
+  <path d="M120 -40 Q300 90 430 160 T760 330 L680 330 Q420 210 300 140 T60 -40Z" fill="url(#mw)"/>
+  <path d="M180 -40 Q340 80 460 150 T780 300 L740 300 Q470 190 350 120 T120 -40Z" fill="#f3ecfb" opacity="0.16"/>
+  <g fill="#ffffff">
+    <circle cx="60" cy="50" r="1.6"/><circle cx="130" cy="110" r="1.2"/><circle cx="210" cy="40" r="2"/>
+    <circle cx="280" cy="150" r="1.3"/><circle cx="350" cy="60" r="1.7"/><circle cx="420" cy="120" r="1.2"/>
+    <circle cx="500" cy="45" r="2.2"/><circle cx="560" cy="140" r="1.4"/><circle cx="640" cy="70" r="1.8"/>
+    <circle cx="710" cy="130" r="1.3"/><circle cx="760" cy="40" r="1.6"/><circle cx="95" cy="190" r="1.4"/>
+    <circle cx="180" cy="230" r="1.1"/><circle cx="320" cy="205" r="1.5"/><circle cx="460" cy="185" r="1.2"/>
+    <circle cx="600" cy="215" r="1.6"/><circle cx="730" cy="195" r="1.1"/><circle cx="40" cy="130" r="1.2"/>
+    <circle cx="250" cy="95" r="1.4"/><circle cx="680" cy="25" r="1.3"/>
+  </g>
+  <path d="M0 310 L110 220 L200 265 L300 185 L400 250 L490 170 L590 255 L690 205 L800 285 L800 310Z" fill="#0a0e1c"/>
+  <g fill="#070a14">
+    <path d="M0 310 h60 l-14 -34 l-16 10 l-14 -20Z"/>
+    <path d="M740 310 h60 l-16 -30 l-14 12 l-14 -22Z"/>
+  </g>
+  <rect y="310" width="800" height="190" fill="url(#nwater)"/>
+  <g opacity="0.5" transform="translate(0,620) scale(1,-1)">
+    <path d="M0 310 L110 220 L200 265 L300 185 L400 250 L490 170 L590 255 L690 205 L800 285 L800 310Z" fill="#0a0e1c"/>
+  </g>
+  <path d="M240 460 Q400 380 720 330 L780 340 Q450 400 300 470Z" fill="url(#mw)" opacity="0.4" />
+  <g fill="#ffffff" opacity="0.65">
+    <circle cx="500" cy="380" r="1.6"/><circle cx="210" cy="400" r="1.2"/><circle cx="350" cy="420" r="1.4"/>
+    <circle cx="640" cy="360" r="1.5"/><circle cx="130" cy="360" r="1.1"/><circle cx="700" cy="430" r="1.2"/>
+    <circle cx="420" cy="465" r="1.3"/><circle cx="60" cy="440" r="1.4"/>
+  </g>
+  <g stroke="#c3d0f0" stroke-width="1.5" opacity="0.28" stroke-linecap="round">
+    <line x1="140" y1="370" x2="260" y2="370"/>
+    <line x1="420" y1="410" x2="580" y2="410"/>
+    <line x1="260" y1="455" x2="400" y2="455"/>
+  </g>
+</svg>

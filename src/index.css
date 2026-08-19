@@ -1,0 +1,490 @@
+/* ---------- Theme tokens ---------- */
+:root {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Dark (default) — night-sky astrophotography palette */
+  --bg: #0a0e1f;
+  --bg-raised: #121834;
+  --bg-card: #141b3a;
+  --border: rgba(148, 163, 216, 0.18);
+  --text: #e8ebf7;
+  --text-muted: #9aa3c7;
+  --accent: #f5b35c;
+  --accent-soft: rgba(245, 179, 92, 0.14);
+  --violet: #8b7ff0;
+  --line: rgba(139, 127, 240, 0.35);
+  --hero-sky: linear-gradient(180deg, #05070f 0%, #0d1330 55%, #1b2352 100%);
+  --hero-text: #f2f4ff;
+  --shadow: 0 10px 30px rgba(2, 4, 12, 0.55);
+  --night-glow: rgba(139, 127, 240, 0.22);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f6f4ee;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --border: rgba(60, 64, 90, 0.14);
+  --text: #23263a;
+  --text-muted: #5d6380;
+  --accent: #c2621d;
+  --accent-soft: rgba(194, 98, 29, 0.1);
+  --violet: #5a4fd0;
+  --line: rgba(90, 79, 208, 0.3);
+  --hero-sky: linear-gradient(180deg, #1a2150 0%, #33407e 60%, #6d6bb4 100%);
+  --hero-text: #f2f4ff;
+  --shadow: 0 8px 24px rgba(40, 44, 70, 0.12);
+  --night-glow: rgba(90, 79, 208, 0.14);
+  color-scheme: light;
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-raised) 82%, transparent);
+  color: var(--text);
+  font: 600 0.82rem var(--font-body);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-sky);
+  color: var(--hero-text);
+  padding: clamp(4.5rem, 12vw, 7.5rem) 1.25rem clamp(3rem, 8vw, 5rem);
+  text-align: center;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 7vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.9rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  color: rgba(242, 244, 255, 0.78);
+  margin-bottom: 1.4rem;
+}
+
+.hero-dates {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- Gear card ---------- */
+.gear-card {
+  margin: 2rem auto 0;
+  max-width: 460px;
+  padding: 1.1rem 1.3rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 14, 34, 0.45);
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+
+.gear-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.gear-list {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.gear-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.gear-label {
+  color: rgba(242, 244, 255, 0.6);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.gear-value {
+  font-weight: 600;
+}
+
+/* ---------- Day navigation ---------- */
+.day-nav {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.day-nav-link {
+  color: var(--hero-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.day-nav-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+/* ---------- Day sections ---------- */
+.days {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 3.5rem) 1.1rem 1rem;
+}
+
+.day {
+  padding-top: 1.5rem;
+  margin-bottom: clamp(2.5rem, 7vw, 4rem);
+  scroll-margin-top: 1.5rem;
+}
+
+.day-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 1.6rem;
+}
+
+.day-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  margin-top: 0.35rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.day-meta {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--line) 6%, var(--line) 94%, transparent);
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 1.6rem;
+}
+
+.stop:last-child {
+  margin-bottom: 0;
+}
+
+.stop-marker {
+  position: absolute;
+  left: -2.4rem;
+  top: 0.35rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  border: 2px solid var(--line);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.stop-night .stop-marker {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 18px var(--night-glow);
+}
+
+/* ---------- Stop cards ---------- */
+.stop-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.15rem 1.25rem 1.3rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stop-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.stop-night .stop-card {
+  border-color: color-mix(in srgb, var(--violet) 45%, var(--border));
+  background:
+    radial-gradient(120% 90% at 85% 0%, var(--night-glow), transparent 55%),
+    var(--bg-card);
+}
+
+.stop-time {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.stop-night .stop-time {
+  color: var(--violet);
+}
+
+.stop-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.stop-subname {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-top: 0.15rem;
+}
+
+.stop-figure {
+  margin: 0.9rem 0;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.stop-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.stop-credit {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  padding: 5px 10px;
+  background: color-mix(in srgb, var(--bg-raised) 60%, transparent);
+}
+
+.stop-credit a {
+  color: inherit;
+}
+
+.stop-description {
+  font-size: 0.96rem;
+  color: var(--text);
+}
+
+.stop-tips {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.stop-night .stop-tips {
+  background: color-mix(in srgb, var(--violet) 12%, transparent);
+  border-color: color-mix(in srgb, var(--violet) 30%, transparent);
+}
+
+.stop-tips-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.stop-night .stop-tips-label {
+  color: var(--violet);
+}
+
+/* Travel stops (no image) are lighter-weight */
+.stop-travel .stop-card {
+  background: transparent;
+  box-shadow: none;
+  border-style: dashed;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 2rem 1.25rem 3rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- Mobile tightening ---------- */
+@media (max-width: 480px) {
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .stop-marker {
+    left: -2rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .stop-card {
+    padding: 1rem 1rem 1.1rem;
+  }
+
+  .day-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .day-badge {
+    margin-top: 0;
+  }
+
+  .theme-toggle-label {
+    display: none;
+  }
+}

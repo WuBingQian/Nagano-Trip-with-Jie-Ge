@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Upper Togakushi Shrine against the mountain cliff">
+  <defs>
+    <linearGradient id="usky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8cfdd"/>
+      <stop offset="1" stop-color="#e6eee6"/>
+    </linearGradient>
+    <linearGradient id="urock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6a7180"/>
+      <stop offset="1" stop-color="#474e5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#usky)"/>
+  <path d="M0 500 L0 120 L90 40 L170 150 L260 20 L360 170 L430 60 L520 180 L620 40 L720 160 L800 90 L800 500Z" fill="url(#urock)"/>
+  <g stroke="#3a4150" stroke-width="5" opacity="0.5">
+    <path d="M90 45 L120 500" fill="none"/>
+    <path d="M260 25 L290 500" fill="none"/>
+    <path d="M430 65 L450 500" fill="none"/>
+    <path d="M620 45 L640 500" fill="none"/>
+  </g>
+  <path d="M0 500 L0 350 Q200 310 400 340 T800 330 L800 500Z" fill="#41584a"/>
+  <g fill="#33463c">
+    <path d="M60 500 q10 -70 28 -80 q18 10 28 80Z"/>
+    <path d="M680 500 q10 -76 30 -86 q20 10 30 86Z"/>
+    <path d="M130 500 q8 -55 22 -64 q14 9 22 64Z"/>
+  </g>
+  <g>
+    <rect x="310" y="330" width="180" height="86" fill="#4e3b2b"/>
+    <g fill="#33261b">
+      <rect x="322" y="330" width="14" height="86"/>
+      <rect x="393" y="330" width="14" height="86"/>
+      <rect x="464" y="330" width="14" height="86"/>
+    </g>
+    <rect x="346" y="348" width="40" height="48" fill="#e9dfc9"/>
+    <rect x="417" y="348" width="40" height="48" fill="#e9dfc9"/>
+    <path d="M290 330 h220 l-24 -46 h-172Z" fill="#2b333c"/>
+    <path d="M282 286 h236 l-12 -20 h-212Z" fill="#20262d"/>
+  </g>
+  <g fill="#c7bda6">
+    <rect x="352" y="416" width="96" height="10"/>
+    <rect x="362" y="426" width="76" height="10"/>
+    <rect x="372" y="436" width="56" height="10"/>
+    <rect x="380" y="446" width="40" height="54"/>
+  </g>
+  <path d="M368 262 v-20 h6 v20Z M426 262 v-20 h6 v20Z" fill="#8a2f24"/>
+  <rect x="360" y="238" width="80" height="7" fill="#8a2f24"/>
+</svg>
